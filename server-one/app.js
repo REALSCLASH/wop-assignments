@@ -4,16 +4,28 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+app.set('view engine', 'pug');
+app.set('views', './views');
+
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.render('index');
 });
+
+
+
 
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
+
+app.get('/kokeilu', (req, res) =>{
+  res.render('test')
+});
+
+
 
 app.get('/catinfo', (req, res) => {
   const cat = {
