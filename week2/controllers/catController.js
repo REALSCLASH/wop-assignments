@@ -12,7 +12,13 @@ const cat_get = (req, res) => {
   res.json(cat);
 };
 
+const cat_post = (reg, res) =>{
+  console.log('cat_post', reg.body, reg.file);
+  res.send('Cat post done.');
+}
+
 module.exports = {
   cat_list_get,
   cat_get,
+  cat_post,
 };
