@@ -1,18 +1,18 @@
 'use strict';
-// catController
-const {cats, getCat} = require('../models/catModel');
+// userController
+const {users, getuser} = require('../models/userModel');
 
-const cat_list_get = (req, res) => {
-  res.json(cats);
+const user_list_get = (req, res) => {
+  res.json(users);
 };
 
-const cat_get = (req, res) => {
-  const cat = getCat(req.params.id);
-  console.log('kissa', cat);
-  res.json(cat);
+const user_get = (req, res) => {
+  const user = getuser(req.params.id);
+  console.log('käyttäjä', user);
+  res.json(user);
 };
 
 module.exports = {
-  cat_list_get,
-  cat_get,
+  user_list_get,
+  user_get,
 };
