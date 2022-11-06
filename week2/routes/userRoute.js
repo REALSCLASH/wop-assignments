@@ -1,20 +1,26 @@
-'use strict';
-const express = require('express');
-const {user_list_get, user_get, user_post} = require('../controllers/userController');
+"use strict";
+const express = require("express");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+const {
+  user_list_get,
+  user_get,
+  user_create,
+} = require("../controllers/userController");
 const router = express.Router();
 
-router.get('/', user_list_get);
+router.get("/", user_list_get);
 
-router.get('/:id', user_get);
+router.get("/:id", user_get);
 
-router.post('/', user_post);
+router.post("/", upload.single("user"), user_create);
 
-router.put('/', (req, res) => {
-  res.send('From this endpoint you can edit users.');
+router.put("/", (req, res) => {
+  res.send("From this endpoint you can edit users.");
 });
 
-router.delete('/', (req, res) => {
-  res.send('From this endpoint you can delete users.');
+router.delete("/", (req, res) => {
+  res.send("From this endpoint you can delete users.");
 });
 
 module.exports = router;
