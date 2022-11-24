@@ -10,6 +10,16 @@ const passport = require('./utils/pass');
 const app = express();
 const port = 3000;
 
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV === 'production') {
+  require('./utils/production')(app, process.env.HTTP_PORT || 3000, process.env.HTTP_PORT || 8000);
+} else {
+  require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
+}
+
+
 app.enable('trust proxy');
 
 app.use ((req, res, next) => {
