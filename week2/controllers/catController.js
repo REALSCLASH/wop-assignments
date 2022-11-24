@@ -57,8 +57,6 @@ const cat_post = async (req, res, next) => {
 
     const coords = await getCoordinates(req.file.path);
 
-    console.log('coords', coords);
-
     const data = [
       req.body.name,
       req.body.birthdate,
@@ -67,6 +65,7 @@ const cat_post = async (req, res, next) => {
       req.file.filename,
       JSON.stringify(coords),
     ];
+
 
     const result = await addCat(data, next);
     if (result.affectedRows < 1) {
